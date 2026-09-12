@@ -1,1 +1,332 @@
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f8;
+  color: #1f2937;
+  padding-bottom: 80px;
+}
+
+/* HEADER */
+
+.header {
+  background: #111827;
+  color: white;
+  padding: 18px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 22px;
+  margin-bottom: 4px;
+}
+
+.header p {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.profile-btn {
+  width: 42px;
+  height: 42px;
+  border: none;
+  border-radius: 50%;
+  background: #374151;
+  color: white;
+  font-size: 20px;
+}
+
+/* STATUS */
+
+.status-bar {
+  background: white;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.online-dot {
+  width: 9px;
+  height: 9px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.status-bar strong {
+  font-size: 14px;
+}
+
+.updated {
+  margin-left: auto;
+  font-size: 12px;
+  color: #16a34a;
+  font-weight: bold;
+}
+
+/* MAIN */
+
+main {
+  padding: 12px;
+}
+
+/* MAP */
+
+.map-container {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.map-title {
+  height: 55px;
+  padding: 0 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.map-title button {
+  border: none;
+  background: #eef2ff;
+  color: #4338ca;
+  padding: 8px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+}
+
+/* TEMPORARY MAP */
+
+.map {
+  height: 330px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(45deg, transparent 46%, #d1d5db 47%, #d1d5db 50%, transparent 51%),
+    linear-gradient(-45deg, transparent 46%, #d1d5db 47%, #d1d5db 50%, transparent 51%);
+  background-size: 110px 110px;
+  background-color: #dbe7d5;
+}
+
+/* ROADS */
+
+.road {
+  position: absolute;
+  background: #f9fafb;
+  border: 2px solid #d1d5db;
+  border-radius: 20px;
+}
+
+.road-1 {
+  width: 140%;
+  height: 45px;
+  top: 130px;
+  left: -20%;
+  transform: rotate(-12deg);
+}
+
+.road-2 {
+  width: 45px;
+  height: 130%;
+  left: 55%;
+  top: -15%;
+  transform: rotate(12deg);
+}
+
+/* BIKES */
+
+.bike,
+.my-bike {
+  position: absolute;
+  width: 42px;
+  height: 42px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 23px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  z-index: 5;
+}
+
+.bike-1 {
+  top: 65px;
+  left: 20%;
+}
+
+.bike-2 {
+  top: 165px;
+  left: 68%;
+}
+
+.bike-3 {
+  top: 235px;
+  left: 28%;
+}
+
+.bike-4 {
+  top: 100px;
+  left: 75%;
+}
+
+.bike-5 {
+  top: 255px;
+  left: 72%;
+}
+
+/* YOUR BIKE */
+
+.my-bike {
+  top: 180px;
+  left: 42%;
+  background: #111827;
+  color: white;
+  border: 3px solid white;
+}
+
+.my-bike span {
+  position: absolute;
+  top: 43px;
+  font-size: 9px;
+  background: #111827;
+  padding: 3px 6px;
+  border-radius: 5px;
+}
+
+/* RIDERS */
+
+.riders-section {
+  margin-top: 14px;
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.section-header h2 {
+  font-size: 18px;
+}
+
+.section-header span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.rider {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.rider:last-child {
+  border-bottom: none;
+}
+
+.rider-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+}
+
+.rider-info {
+  margin-left: 11px;
+  flex: 1;
+}
+
+.rider-info strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.rider-info small {
+  color: #16a34a;
+  font-size: 11px;
+}
+
+.call-btn {
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #dcfce7;
+  font-size: 16px;
+}
+
+/* BOTTOM NAVIGATION */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 68px;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 100;
+}
+
+.nav-item {
+  border: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #6b7280;
+  font-size: 20px;
+}
+
+.nav-item small {
+  font-size: 10px;
+}
+
+.nav-item.active {
+  color: #111827;
+  font-weight: bold;
+}
+
+/* DESKTOP */
+
+@media (min-width: 700px) {
+
+  body {
+    max-width: 700px;
+    margin: auto;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+    min-height: 100vh;
+  }
+
+  .bottom-nav {
+    max-width: 700px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+}
