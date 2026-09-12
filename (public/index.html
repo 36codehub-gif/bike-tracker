@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ProTrack Live Voice & Telemetry</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="brand"><i class="fa-solid fa-headset"></i> PROTRACK LIVE</div>
+    <div class="controls">
+      <button id="voiceBtn" class="btn v-off" onclick="toggleVoice()"><i class="fa-solid fa-microphone-slash"></i> Connect Voice</button>
+      <button id="muteBtn" class="btn" onclick="toggleMute()" disabled><i class="fa-solid fa-microphone"></i> Mute</button>
+    </div>
+  </header>
+
+  <!-- Hidden Remote Audio Streams Container -->
+  <div id="audioContainer" style="display:none;"></div>
+
+  <main class="dashboard">
+    <div class="user-selector">
+      <label>Rider Profile:</label>
+      <select id="riderSelect" onchange="switchUser()">
+        <option value="Ajay_Patel">Ajay Patel</option>
+        <option value="Arvind_Kewat">Arvind Kewat</option>
+        <option value="Baldev_Patel">Baldev Patel</option>
+        <option value="Chaitan_Maitry">Chaitan Maitry</option>
+      </select>
+    </div>
+
+    <div class="status-box" id="voiceStatus">Status: Voice Offline</div>
+
+    <div class="telemetry">
+      <div class="card"><span>Speed</span><strong id="speedVal">0.0 km/h</strong></div>
+      <div class="card"><span>Distance</span><strong id="distVal">0.00 KM</strong></div>
+    </div>
+
+    <button id="trackBtn" class="btn btn-primary" onclick="toggleTracking()">Start GPS Broadcast</button>
+
+    <div class="chat-box">
+      <div class="chat-logs" id="chatLogs"></div>
+      <div class="chat-input">
+        <input type="text" id="chatMsg" placeholder="Type group message..." onkeypress="if(event.key==='Enter') sendChat()">
+        <button onclick="sendChat()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
