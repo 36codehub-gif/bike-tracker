@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ProTrack Enterprise Telemetry</title>
+
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0b0f19">
+
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- SOS Alert Banner -->
+  <div id="sosBanner" class="sos-banner">
+    <div class="sos-content">
+      <i class="fa-solid fa-triangle-exclamation fa-beat"></i>
+      <span>EMERGENCY SOS: <strong id="sosRiderName">---</strong> ko Help Chahiye!</span>
+    </div>
+    <button onclick="dismissSOS()" class="sos-close-btn">&times;</button>
+  </div>
+
+  <!-- Enterprise Header -->
+  <header class="app-header">
+    <div class="logo">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>PROTRACK <small>ENTERPRISE</small></span>
+    </div>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="toggleLeaderboard()" title="Live Rankings"><i class="fa-solid fa-trophy"></i></button>
+      <button class="icon-btn" onclick="toggleMapTheme()" title="Toggle Theme"><i class="fa-solid fa-moon" id="themeIcon"></i></button>
+    </div>
+  </header>
+
+  <!-- Main Map Container -->
+  <div id="map"></div>
+
+  <!-- Bottom Console Panel -->
+  <main class="control-panel">
+    <div class="panel-header">
+      <div class="profile-select-wrapper">
+        <i class="fa-solid fa-user-circle"></i>
+        <select id="riderSelect" onchange="handleRiderChange()">
+          <option value="Ajay_Patel">Ajay Patel</option>
+          <option value="Arvind_Kewat">Arvind Kewat</option>
+          <option value="Baldev_Patel">Baldev Patel</option>
+          <option value="Chaitan_Maitry">Chaitan Maitry</option>
+          <option value="Sachin_Maitry">Sachin Maitry</option>
+          <option value="Sanjay_Kumar">Sanjay Kumar</option>
+          <option value="Shiv_Patel">Shiv Patel</option>
+        </select>
+      </div>
+      <span class="status-badge" id="appStatus"><i class="fa-solid fa-circle"></i> Offline</span>
+    </div>
+
+    <!-- Gap Analytics Card -->
+    <div class="gap-card" id="gapCard">
+      <div class="gap-item">
+        <span class="gap-label"><i class="fa-solid fa-crown"></i> Leader Gap</span>
+        <span class="gap-val" id="gapToLeader">0.00 KM</span>
+      </div>
+      <div class="gap-item">
+        <span class="gap-label"><i class="fa-solid fa-arrow-up-long"></i> Ahead Rider Gap</span>
+        <span class="gap-val" id="gapToNext">0.00 KM</span>
+      </div>
+    </div>
+
+    <!-- Telemetry Metrics Grid -->
+    <div class="telemetry-grid">
+      <div class="tele-card">
+        <span class="tele-label"><i class="fa-solid fa-gauge-high"></i> Speed</span>
+        <span class="tele-value" id="liveSpeed">0 <small>km/h</small></span>
+      </div>
+      <div class="tele-card">
+        <span class="tele-label"><i class="fa-solid fa-route"></i> Distance</span>
+        <span class="tele-value" id="liveDistance">0.00 <small>KM</small></span>
+      </div>
+      <div class="tele-card">
+        <span class="tele-label"><i class="fa-solid fa-bolt"></i> Max Speed</span>
+        <span class="tele-value" id="maxSpeed">0 <small>km/h</small></span>
+      </div>
+      <div class="tele-card">
+        <span class="tele-label"><i class="fa-solid fa-clock"></i> Duration</span>
+        <span class="tele-value" id="rideTime">00:00</span>
+      </div>
+    </div>
+
+    <!-- Action Bar -->
+    <div class="action-grid">
+      <button id="startBtn" class="btn btn-primary" onclick="toggleTracking()">
+        <i class="fa-solid fa-play"></i> Start Ride
+      </button>
+      <button class="btn btn-secondary" onclick="focusCurrentRider()">
+        <i class="fa-solid fa-crosshairs"></i> My Location
+      </button>
+      <button class="btn btn-danger" onclick="triggerSOS()">
+        <i class="fa-solid fa-bell"></i> SOS
+      </button>
+    </div>
+  </main>
+
+  <!-- Live Rankings / Rider Click Sheet Modal -->
+  <div id="leaderboardModal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-trophy"></i> Live Group Standings</h3>
+        <button class="close-btn" onclick="toggleLeaderboard()">&times;</button>
+      </div>
+      <p class="modal-sub">Rider ke Profile par <b>Click / Tick</b> karke uski exact Location dekhein:</p>
+      <div class="modal-body" id="leaderboardList">
+        <!-- Live Cards Inserted via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
