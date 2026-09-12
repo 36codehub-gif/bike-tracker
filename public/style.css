@@ -1,0 +1,14 @@
+body { font-family: sans-serif; background: #0b0f19; color: #fff; margin: 0; padding: 16px; }
+.header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.btn { border: none; padding: 10px 14px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+.v-off { background: #10b981; color: #000; }
+.v-on { background: #ef4444; color: #fff; }
+.dashboard { max-width: 450px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.status-box { background: rgba(255,255,255,0.05); padding: 10px; border-radius: 8px; font-size: 13px; text-align: center; }
+.telemetry { display: flex; gap: 10px; }
+.card { flex: 1; background: #1e293b; padding: 12px; border-radius: 8px; display: flex; flex-direction: column; }
+.btn-primary { background: #38bdf8; color: #000; }
+.chat-box { background: #1e293b; border-radius: 12px; padding: 10px; height: 200px; display: flex; flex-direction: column; }
+.chat-logs { flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.chat-input { display: flex; gap: 6px; margin-top: 8px; }
+.chat-input input { flex: 1; border: none; padding: 8px; border-radius: 6px; }
