@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ProTrack Enterprise Communications System</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+
+  <div class="app-container">
+    <header class="app-header">
+      <div class="brand-title"><i class="fa-solid fa-satellite-dish"></i> PROTRACK ENTERPRISE</div>
+      <div class="connection-indicator" id="networkStatus">SYSTEM READY</div>
+    </header>
+
+    <section class="control-panel">
+      <div class="form-group">
+        <label for="riderSelect">AUTHENTICATED OPERATOR PROFILE</label>
+        <select id="riderSelect" onchange="initializeUserSession()">
+          <option value="Ajay_Patel">Ajay Patel (Lead Command)</option>
+          <option value="Arvind_Kewat">Arvind Kewat (Unit 1)</option>
+          <option value="Baldev_Patel">Baldev Patel (Unit 2)</option>
+          <option value="Chaitan_Maitry">Chaitan Maitry (Unit 3)</option>
+        </select>
+      </div>
+
+      <div class="action-grid">
+        <button id="voiceControlBtn" class="btn btn-emerald" onclick="toggleVoiceMesh()">
+          <i class="fa-solid fa-microphone"></i> INITIALIZE VOICE MESH
+        </button>
+        <button id="muteControlBtn" class="btn btn-slate" onclick="toggleMute()" disabled>
+          <i class="fa-solid fa-volume-xmark"></i> MUTE AUDIO
+        </button>
+      </div>
+    </section>
+
+    <section class="telemetry-grid">
+      <div class="telemetry-card">
+        <span class="label">VELOCITY</span>
+        <span class="value" id="telemetrySpeed">0.0 <small>km/h</small></span>
+      </div>
+      <div class="telemetry-card">
+        <span class="label">LATITUDE</span>
+        <span class="value" id="telemetryLat">0.000000</span>
+      </div>
+      <div class="telemetry-card">
+        <span class="label">LONGITUDE</span>
+        <span class="value" id="telemetryLng">0.000000</span>
+      </div>
+    </section>
+
+    <button id="telemetryBroadcasterBtn" class="btn btn-sky" onclick="toggleTelemetryBroadcast()">
+      <i class="fa-solid fa-location-crosshairs"></i> START TELEMETRY BROADCAST
+    </button>
+
+    <section class="console-box">
+      <div class="console-header">PERSISTENT SYSTEM MESSAGING</div>
+      <div class="console-logs" id="consoleLogs"></div>
+      <div class="console-input">
+        <input type="text" id="chatInput" placeholder="Send operational dispatch..." onkeypress="if(event.key==='Enter') dispatchMessage()">
+        <button onclick="dispatchMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+      </div>
+    </section>
+  </div>
+
+  <div id="remoteAudioContainer" style="display: none;"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
